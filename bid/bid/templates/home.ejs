@@ -1,0 +1,1390 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bid Buddy</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: linear-gradient(135deg, #1127a3, #9a7be2);
+      color: rgb(255, 255, 255);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      height: 70px;
+
+    }
+
+    .header img {
+      height: 60px;
+      margin-left: -60px;
+    }
+
+    .header .buttons {
+      display: flex;
+      gap: 20px;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 10px 30px;
+      border-radius: 50px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+    }
+
+    /* BUY Button */
+    #btn-buy {
+      background: linear-gradient(135deg, #56ab2f, #a8e063);
+    }
+
+    #btn-buy::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 150%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: skewX(-45deg);
+      z-index: 1;
+      animation: shine-buy 3s infinite;
+    }
+
+    @keyframes shine-buy {
+      0% {
+        left: -150%;
+      }
+
+      50% {
+        left: 150%;
+      }
+
+      100% {
+        left: -150%;
+      }
+    }
+    #btn-home {
+      background: linear-gradient(135deg, #5588e7, #b352e0);
+    }
+
+    #btn-home::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 150%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: skewX(-45deg);
+      z-index: 1;
+      animation: shine-sell 3s infinite;
+    }
+
+    /* SELL Button */
+    #btn-sell {
+      background: linear-gradient(135deg, #e7c555, #f1ff2b);
+    }
+
+    #btn-sell::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 150%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: skewX(-45deg);
+      z-index: 1;
+      animation: shine-sell 3s infinite;
+    }
+
+    @keyframes shine-sell {
+      0% {
+        left: -150%;
+      }
+
+      50% {
+        left: 150%;
+      }
+
+      100% {
+        left: -150%;
+      }
+    }
+
+    /* LOGIN Button */
+    #btn-login {
+      background: linear-gradient(135deg, #36d1dc, #5b86e5);
+    }
+
+    #btn-login::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 150%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: skewX(-45deg);
+      z-index: 1;
+      animation: shine-login 3s infinite;
+    }
+
+    @keyframes shine-login {
+      0% {
+        left: -150%;
+      }
+
+      50% {
+        left: 150%;
+      }
+
+      100% {
+        left: -150%;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 5px;
+      height: 80vh;
+      background: linear-gradient(135deg, #1127a3, #9a7be2);
+      color: rgb(15, 15, 15);
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 50%;
+      margin-bottom: 100px;
+    }
+
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .hero img {
+      height: 600px;
+      width: 700px;
+      border-radius: 4px;
+      transition: transform 0.3s;
+      margin-top: 100px;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(to right, #0056b3, #28a745);
+      color: white;
+      margin-top: px;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .cta a {
+      text-decoration: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      background: #ffc107;
+      color: #333;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .cta a:hover {
+      background: #e0a800;
+    }
+
+    /* Footer */
+   
+    #bud {
+      font-size: 2rem;
+      font-weight: bold;
+      background: linear-gradient(90deg, #fffffe, #ffff27, #15ffeb);
+      background-size: 400%;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+      animation: shine 2s linear infinite, glitter 3s ease-in-out infinite;
+      position: relative;
+      margin-left: -500px;
+    }
+
+    @keyframes shine {
+      0% {
+        background-position: 0%;
+      }
+
+      100% {
+        background-position: 400%;
+      }
+    }
+
+    @keyframes glitter {
+
+      0%,
+      100% {
+        text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.5),
+          0px 0px 30px rgba(255, 255, 255, 0.3);
+      }
+
+      50% {
+        text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.8),
+          0px 0px 40px rgba(255, 255, 255, 0.7);
+      }
+    }
+
+    #find {
+      color: white;
+      margin-left: 100px;
+      font-size: 70px;
+      font-weight: 700;
+      margin-top: -40px;
+    }
+
+    #next {
+      margin-top: 50px;
+      margin-left: 100px;
+      color: #15ffeb;
+      font-weight: 600;
+      font-size: 20px;
+
+    }
+
+    #words {
+      color: white;
+      margin-left: 100px;
+      font-size: 25px;
+    }
+
+    .browse-slider .browse-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fdffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+      margin: 10px;
+      padding: 10px;
+    
+
+    }
+
+    .browse-slider .browse-item img {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+      object-fit: contain;
+      background-color: #ffffff;
+      border-radius: 5px;
+    }
+
+    .browse-slider .browse-item .info {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #555;
+    }
+
+    #i1 {
+      width: 150px;
+      height: 200px;
+    }
+
+    .m--15 {
+      background: linear-gradient(to right, #c275f5, #91f3a8);
+    }
+
+    .blinking-image {
+      animation: blink 1s infinite;
+      margin-top: 600px;
+      margin-left: 50px;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+        /* Fully visible */
+      }
+
+      50% {
+        opacity: 0;
+        /* Hidden */
+      }
+    }
+
+    .auction-container,
+    .auction-containers {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background-size: cover;
+      min-height: 100vh;
+      position: relative;
+      margin-top: -700px;
+
+    }
+
+    /* Cards Wrapper */
+    .cards-wrapper,
+    .cards-wrappers {
+      display: flex;
+      gap: 20px;
+      z-index: 1;
+
+      /* To ensure cards appear over the background */
+    }
+
+    /* Auction Card */
+    .auction-card {
+      background: rgba(255, 255, 255, 0.9);
+      /* Slight transparency for background visibility */
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 380px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .auction-cards {
+      background: rgba(250, 240, 250, 0.9);
+      /* Slight transparency for background visibility */
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      width: 380px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .auction-card:hover,
+    .auction-cards:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Auction Image Section */
+    .auction-thumb img,
+    .auction-thumbs img {
+      width: 100%;
+      border-bottom: 2px solid #f9a825;
+      transition: transform 0.4s ease;
+
+    }
+
+
+
+    .auction-thumb img:hover,
+    .auction-thumbs img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Auction Content */
+    .auction-content,
+    .auction-contents {
+      padding: 25px;
+      text-align: center;
+    }
+
+    .auction-content .title a,
+    .auction-contents .titles a {
+      font-size: 22px;
+      font-weight: bold;
+      color: #333333;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .auction-content .title a:hover,
+    .auction-contents .titles a:hover {
+      color: #f9a825;
+    }
+
+    /* Custom Button */
+    .custom-button,
+    .custom-buttons {
+      display: inline-block;
+      background: linear-gradient(45deg, #f9a825, #d48806);
+      color: #ffffff;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .custom-button:hover,
+    .custom-buttons:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(249, 168, 37, 0.4);
+
+    }
+
+    .bid-area,
+    .bid-areas {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+
+    .bid-amount,
+    .bid-amounts {
+      text-align: center;
+    }
+
+    .bid-amount .icon,
+    .bid-amounts .icons {
+      color: #f9a825;
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .bid-amount .current,
+    .bid-amounts .currents {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .bid-amount .amount,
+    .bid-amounts .amounts {
+      font-size: 18px;
+      font-weight: bold;
+      color: #444;
+    }
+
+
+    /* Custom Button */
+    .custom-button,
+    .custom-buttons {
+      display: inline-block;
+      background: linear-gradient(45deg, #f9a825, #d48806);
+      color: #ffffff;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .auction-thumb .rating,
+    .auction-thumbs .rating {
+      position: absolute;
+      top: 15px;
+      background: rgba(255, 255, 255, 0.7);
+      color: #fff;
+      width: 0px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: 0.3s ease, transform 0.3s ease;
+    }
+
+    .auction-thumb .rating,
+    .auction-thumbs .rating {
+      left: 15px;
+    }
+
+
+    .auction-thumb .rating:hover,
+    .auction-thumbs .rating:hover {
+      background: #f9a825;
+      transform: scale(1.2);
+    }
+
+    .custom-button:hover,
+    .custom-buttons:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(249, 168, 37, 0.4);
+    }
+
+    #cars {
+      background: no-repeat center center fixed;
+      background-size: cover;
+
+    }
+
+    .container {
+      width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      margin-top: -750px;
+      height: 300px;
+
+    }
+
+    .auction-grid-1 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-top: 50px;
+
+
+    }
+
+    .auction-item-1 {
+      display: flex;
+      align-items: center;
+      background: #fafafa;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateX(0);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      width: 450px;
+      height: 250px;
+    }
+
+    .auction-item-1.slide-from-left {
+      transform: translateX(-100%);
+    }
+
+    .auction-item-1.slide-from-right {
+      transform: translateX(100%);
+    }
+
+    .auction-item-1.in-view {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .auction-item-1:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background-color: #fcdcfa;
+    }
+
+    .auction-thumb-1 {
+      flex: 1;
+      background-color: #f9a825;
+    }
+
+    .auction-thumb-1 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+    }
+
+    .auction-content-1 {
+      flex: 1;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .auction-content-1 .title-1 {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .auction-content-1:hover,
+    .title-1:hover {
+      color: #f9a825;
+    }
+
+    .bid-amount-1 {
+      display: flex;
+      align-items: center;
+      margin: 15px 0;
+    }
+
+    .bid-amount-1 .icon {
+      font-size: 24px;
+      color: #f9a825;
+      margin-right: 10px;
+    }
+
+    .bid-amount-1 .amount-content-1 .current-1 {
+      font-size: 14px;
+      color: #777;
+    }
+
+    .bid-amount-1 .amount-content-1 .amount-1 {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .auction-item-1 {
+        flex-direction: column;
+      }
+
+      .auction-thumb-1 {
+        order: 1;
+      }
+
+      .auction-content-1 {
+        order: 2;
+        text-align: center;
+      }
+    }
+  .features {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  position: relative;
+  padding: 2rem 4rem;
+  background: linear-gradient(120deg, #aec0e6, #65e2f3);
+  height: 390px;
+  
+}
+
+.features::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px; /* Position of the timeline line */
+  width: 4px;
+  
+}
+#heading{
+  background: linear-gradient(to right, #c275f5, #91f3a8);
+  margin-top: -20px;
+  color: white;
+  height: 20px;
+
+}
+
+.feature-card {
+  position: relative;
+  padding: 2rem 2rem 2rem 4rem;
+  background: transparent;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: linear-gradient(120deg, #83dbf1, #d6dbeb);
+}
+#fc1{
+    margin-top: -206px;    
+
+    margin-left: 720px;  
+}
+#fc2{
+    margin-top: -350px;
+    margin-left: 720px;  
+}
+#fc3{
+    margin-top: -350px;
+    margin-left: 720px;  
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border: 4px solid #3498db;
+  border-radius: 50%;
+  z-index: 2;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.feature-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+.feature-card:hover {
+  background: rgba(52, 152, 219, 0.1);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+  transform: translateX(10px);
+}
+
+.feature-card:hover::before {
+  transform: translateY(-50%) scale(1.2);
+  background: #eef5fa;
+}
+
+.feature-card:hover h3 {
+  color: #ffffff;
+}
+
+.feature-card:hover p {
+  color: #333;
+}
+#imm{
+    margin-left: 10px;
+    margin-top: -15px;
+}
+.features-title {
+    font-size: 3rem;
+    color: #041529; /* Modern blue shade */
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Poppins', sans-serif; /* Trendy font */
+    letter-spacing: 2px;
+    margin: 20px 0;
+    background: linear-gradient(90deg, #093568, #50C878); /* Gradient effect */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Gradient text */
+    position: relative;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Adding underline effect with hover */
+.features-title::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 3px;
+    background: #50C878; /* Green shade */
+    margin: 10px auto 0;
+    transition: width 0.4s ease;
+}
+
+.features-title:hover::after {
+    width: 50%;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.footer {
+      background: linear-gradient(135deg, #1127a3, #5c0a81);
+      color: #fff;
+      padding: 40px 20px 20px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+    }
+
+    .footer-section {
+      flex: 1 1 200px;
+      min-width: 200px;
+    }
+
+    .footer-section h4 {
+      font-size: 16px;
+      color: #ffdd00;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .footer-section a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      margin-bottom: 10px;
+      font-size: 14px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+      color: #ffdd00;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      margin-right: 15px;
+      color: #fff;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons p:hover {
+      color: #ffdd00;
+    }
+
+    .app-download img {
+      width: 140px;
+      margin: 10px 10px 0 0;
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #ccc;
+      font-size: 12px;
+      color: #bbb;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .social-icons a {
+        margin: 5px;
+      }
+
+      .app-download img {
+        width: 120px;
+      }
+    }
+    #ic2{
+      margin-top: -35px;
+      margin-left: 20px;
+    }
+    #ic3{
+      margin-top: -35px;
+      margin-left: 45px;
+    }
+    #ic4{
+      margin-top: -35px;
+      margin-left: 70px;
+    }
+    #app1{
+      margin-top: -75px;
+      margin-left: 150px;
+    }
+    .hbsl{
+      color: white;
+    }
+
+
+   
+   
+
+
+    
+
+    
+     
+   
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <img src="/image/logo5.png" alt="Bid Buddy Logo">
+    <h3 id="bud">BID BUDDY</h3>
+    <div class="buttons">
+      <a href="/" class="hbsl" id="btn-home">Home</a>
+      <a href="/form" class="hbsl" id="btn-buy">BUY</a>
+      <a href="/forms" class="hbsl" id="btn-sell">SELL</a>
+      <a href="/login"class="hbsl" id="btn-login">LOGIN</a>
+    </div>
+  </header>
+  {% block content %}
+  <section class="hero">
+    <div class="hero-content">
+      <p id="next">Next Generation Auction</p>
+      <p id="find">Find Your <br> Next Deal!</p>
+      <p id="words">Online Auction is where everyone goes to shop, sell,and buy, while discovering variety and
+        affordability.</p>
+      <p class="animated-text"></p>
+    </div>
+    <img src="/image/bid.png" alt="Bidding Illustration" width="1300px">
+  </section>
+  <div id="heading">
+  
+  </div>
+  <div class="m--15">
+    <div class="browse-slider owl-theme owl-carousel">
+      <div class="browse-item">
+        <img src="/image/01.png" id="i1" alt="auction">
+        <span class="info">Vehicles</span>
+      </div>
+      <div class="browse-item">
+        <img src="/image/02.png" id="i1" alt="auction">
+        <span class="info">Jewelry</span>
+      </div>
+      <div class="browse-item">
+        <img src="/image/03.png" id="i1" alt="auction">
+        <span class="info">Watches</span>
+      </div>
+      <div class="browse-item">
+        <img src="/image/04.png" id="i1" alt="auction">
+        <span class="info">Electronics</span>
+      </div>
+      <div class="browse-item">
+        <img src="/image/05.png" id="i1" alt="auction">
+        <span class="info">Sports</span>
+      </div>
+      <div class="browse-item">
+        <img src="/image/06.png" id="i1" alt="auction">
+        <span class="info">Real Estate</span>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<h1 class="features-title">Our Features</h1>
+
+  <img src="/image/car.png" id="cars" alt="" width="1340px" height="700px">
+  <div class="auction-container">
+ 
+    <div class="cards-wrapper">
+      <!-- Auction Card 1 -->
+      <div class="auction-card">
+        <div class="auction-thumb">
+          <img src="/image/auction-1.jpg" alt="Car">
+        </div>
+        <div class="auction-content">
+          <h6 class="title"><a>2018 Hyundai Sonata</a></h6>
+          <div class="bid-area">
+            <div class="bid-amount">
+              <div class="icon"><i class="flaticon-auction"></i></div>
+              <div class="current">Current Bid</div>
+              <div class="amount">Rs.1,40,000.00</div>
+            </div>
+            <div class="bid-amount">
+              <div class="icon"><i class="flaticon-money"></i></div>
+              <div class="current">Buy Now</div>
+              <div class="amount">Rs.1,50,000.00</div>
+            </div>
+          </div>
+          <a class="custom-button">Place Bid</a>
+        </div>
+      </div>
+
+      <!-- Auction Card 2 -->
+      <div class="auction-card">
+        <div class="auction-thumb">
+            <img src="/image/auction-2.jpg" alt="Car">
+        </div>
+        <div class="auction-content">
+          <h6 class="title"><a>2018 Nissan Versa, S</a></h6>
+          <div class="bid-area">
+            <div class="bid-amount">
+              <div class="icon"><i class="flaticon-auction"></i></div>
+              <div class="current">Current Bid</div>
+              <div class="amount">Rs.3,20,000.00</div>
+            </div>
+            <div class="bid-amount">
+              <div class="icon"><i class="flaticon-money"></i></div>
+              <div class="current">Buy Now</div>
+              <div class="amount">Rs.4,00,000.00</div>
+            </div>
+          </div>
+          <a class="custom-button">Place Bid</a>
+        </div>
+      </div>
+
+      <!-- Auction Card 3 -->
+      <div class="auction-card">
+        <div class="auction-thumb">
+          <img src="/image/auction-4.png" alt="Car">
+        </div>
+        <div class="auction-content">
+          <h6 class="title"><a>2018 Honda Accord</a></h6>
+          <div class="bid-area">
+            <div class="bid-amount">
+              <div class="current">Current Bid</div>
+              <div class="amount">Rs.2,90,000.00</div>
+            </div>
+            <div class="bid-amount">
+              <div class="icon"><i class="flaticon-money"></i></div>
+              <div class="current">Buy Now</div>
+              <div class="amount">Rs.3,60,000.00</div>
+            </div>
+          </div>
+          <a class="custom-button">Place Bid</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <br>
+  <img src="/image/jwelry-bg.png" id="cars" alt="" width="1340px" height="700px">
+  <div class="auction-containers">
+    <div class="cards-wrappers">
+      <!-- Auction Card 1 -->
+      <div class="auction-cards">
+        <div class="auction-thumbs">
+          <img src="/image/auction-1 (1).jpg" alt="Car">
+
+        </div>
+        <div class="auction-contents">
+          <h6 class="titles"><a>Vintage Rolex</a></h6>
+          <div class="bid-areas">
+            <div class="bid-amounts">
+              <div class="icons"><i class="flaticon-auction"></i></div>
+              <div class="currents">Current Bid</div>
+              <div class="amounts">Rs.40,000.00</div>
+            </div>
+            <div class="bid-amounts">
+              <div class="icons"><i class="flaticon-money"></i></div>
+              <div class="currents">Buy Now</div>
+              <div class="amounts">Rs.50,000.00</div>
+            </div>
+          </div>
+          <a class="custom-buttons">Place Bid</a>
+        </div>
+      </div>
+
+      <!-- Auction Card 2 -->
+      <div class="auction-cards">
+        <div class="auction-thumbs">
+          <img src="/image/auction-2 (1).jpg" alt="Car">
+        </div>
+        <div class="auction-contents">
+          <h6 class="titles"><a>Lady’s Vintage Rolex</a></h6>
+          <div class="bid-areas">
+            <div class="bid-amounts">
+              <div class="icons"><i class="flaticon-auction"></i></div>
+              <div class="currents">Current Bid</div>
+              <div class="amounts">Rs.90,000.00</div>
+            </div>
+            <div class="bid-amounts">
+              <div class="icons"><i class="flaticon-money"></i></div>
+              <div class="currents">Buy Now</div>
+              <div class="amounts">Rs.1,50,000.00</div>
+            </div>
+          </div>
+          <a class="custom-buttons">Place Bid</a>
+        </div>
+      </div>
+
+      <!-- Auction Card 3 -->
+      <div class="auction-cards">
+        <div class="auction-thumbs">
+          <img src="/image/auction-3 (1).jpg" alt="Car">
+        </div>
+        <div class="auction-contents">
+          <h6 class="titles"><a>Lady’s Retro Diamond</a></h6>
+          <div class="bid-areas">
+            <div class="bid-amounts">
+              <div class="icons"><i class="flaticon-auction"></i></div>
+              <div class="currents">Current Bid</div>
+              <div class="amounts">Rs.1,90,000.00</div>
+            </div>
+            <div class="bid-amounts">
+              <div class="icons"><i class="flaticon-money"></i></div>
+              <div class="currents">Buy Now</div>
+              <div class="amounts">Rs.2,60,000.00</div>
+            </div>
+          </div>
+          <a class="custom-buttons">Place Bid</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <br>
+  <img src="image/real-bg.png" id="cars" alt="" width="1340px" height="700px">
+  <div class="container">
+    <h1 style="text-align:center;"></h1>
+    <div class="auction-grid-1">
+      <!-- Auction Item 1 -->
+      <div class="auction-item-1 slide-from-left">
+        <div class="auction-thumb-1 ">
+          <img src="/image/cam.jpg" alt="Auction 1">
+        </div>
+        <div class="auction-content-1">
+          <p class="title-1">Magnifying Glasses</p>
+          <div class="bid-amount-1">
+            <div class="icon-1"><i class="flaticon-auction"></i></div>
+            <div class="amount-content-1">
+              <div class="current-1">Current Bid</div>
+              <div class="amount-1">Rs.15,000</div>
+              <img src="https://files.svgcdn.io/token-branded/bidz.svg" height="96" width="106" loading="lazy"
+                alt="bidz">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Auction Item 2 -->
+      <div class="auction-item-1 slide-from-right">
+        <div class="auction-thumb-1">
+          <img src="/image/cam1.jpg" alt="Auction 2">
+        </div>
+        <div class="auction-content-1">
+          <p class="title-1">Surveillance Wifi Exterieur,1080P Camera</p>
+          <div class="bid-amount-1">
+            <div class="icon-1"><i class="flaticon-auction"></i></div>
+            <div class="amount-content-1">
+              <div class="current-1">Current Bid</div>
+              <div class="amount-1">Rs.18,500</div>
+              <img src="https://files.svgcdn.io/token-branded/bidz.svg" height="96" width="106" loading="lazy"
+                alt="bidz">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Auction Item 3 -->
+      <div class="auction-item-1 slide-from-left">
+        <div class="auction-thumb-1">
+          <img src="/image/cam3.jpg" alt="Auction 3">
+        </div>
+        <div class="auction-content-1">
+          <p class="title-1">Wifi Doorbell Camera For Apartments</p>
+          <div class="bid-amount-1">
+            <div class="icon-1"><i class="flaticon-auction"></i></div>
+            <div class="amount-content-1">
+              <div class="current-1">Current Bid</div>
+              <div class="amount-1">Rs.24,000</div>
+              <img src="https://files.svgcdn.io/token-branded/bidz.svg" height="96" width="106" loading="lazy"
+                alt="bidz">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Auction Item 4 -->
+      <div class="auction-item-1 slide-from-right">
+        <div class="auction-thumb-1">
+          <img src="/image/cam4.jpg" alt="Auction 4">
+        </div>
+        <div class="auction-content-1">
+          <p class="title-1">Apple Macbook Pro Laptop</p>
+          <div class="bid-amount-1">
+            <div class="icon-1"><i class="flaticon-auction"></i></div>
+            <div class="amount-content-1">
+              <div class="current-1">Current Bid</div>
+              <div class="amount-1">Rs.35,000</div>
+              <img src="https://files.svgcdn.io/token-branded/bidz.svg" height="96" width="106" loading="lazy"
+                alt="bidz">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="auction-item-1 slide-from-left">
+        <div class="auction-thumb-1">
+          <img src="/image/cam5.jpg" alt="Auction 3">
+        </div>
+        <div class="auction-content-1">
+          <p class="title-1">Canon EOS Rebel T6I Digital Camera</p>
+          <div class="bid-amount-1">
+            <div class="icon-1"><i class="flaticon-auction"></i></div>
+            <div class="amount-content-1">
+              <div class="current-1">Current Bid</div>
+              <div class="amount-1">Rs.21,000</div>
+              <img src="https://files.svgcdn.io/token-branded/bidz.svg" height="96" width="106" loading="lazy"
+                alt="bidz">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="auction-item-1 slide-from-left">
+        <div class="auction-thumb-1">
+          <img src="/image/cam9.jpg" alt="Auction 3">
+        </div>
+        <div class="auction-content-1">
+          <p class="title-1">Stangl Vintage Art Pottery Scallop Shell Dish</p>
+          <div class="bid-amount-1">
+            <div class="icon-1"><i class="flaticon-auction"></i></div>
+            <div class="amount-content-1">
+              <div class="current-1">Current Bid</div>
+              <div class="amount-1">Rs.15,000</div>
+              <img src="https://files.svgcdn.io/token-branded/bidz.svg" height="96" width="106" loading="lazy"
+                alt="bidz">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <center><img src="/image/bhj.JPG" class="blinking-image" alt=""></center>
+  </div>
+  <br><br>
+  <section class="features">
+    <div id="imm">
+      <img src=" /image/imm.png" id="imm" alt="" width="700px" height="450px">
+    </div>
+    <div class="feature-card" id="fc1">
+      <h3>Fast Transactions</h3>
+      <p>Experience secure, fast, and reliable transactions.</p>
+    </div>
+    <div class="feature-card" id="fc2">
+      <h3>Wide Audience</h3>
+      <p>Reach buyers and sellers globally with Bid Buddy.</p>
+    </div>
+    <div class="feature-card" id="fc3">
+      <h3>24/7 Support</h3>
+      <p>We provide round-the-clock support for all your needs.</p>
+    </div>
+  </section>
+  <section class="cta">
+    <h2>Start Your Journey Today!</h2>
+    <a href="/login">Join Now</a>
+  </section>
+ 
+
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- About Section -->
+      <div class="footer-section">
+        <h4>About</h4>
+        <p>Company Info</p>
+        <p>Careers</p>
+        <p>Press</p>
+        <p>Investor Relations<p>
+      </div>
+
+      <!-- Help Section -->
+      <div class="footer-section">
+        <h4>Help</h4>
+        <p>Customer Support</p>
+        <p>FAQs</p>
+        <p>Returns & Refunds</p>
+        <p>Contact Us</p>
+      </div>
+
+      <!-- Policies Section -->
+      <div class="footer-section">
+        <h4>Policies</h4>
+        <p>Privacy Policy</p>
+        <p>Terms of Use</p>
+        <p>Cookie Policy</p>
+        <p>Shipping Policy</p>
+      </div>
+
+      <!-- Social Media & Apps -->
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <div class="social-icons">
+          <p id="ic1"><i class="fab fa-facebook-f"></i></p>
+          <p id="ic2"><i class="fab fa-twitter"></i></p>
+          <p id="ic3"><i class="fab fa-instagram"></i></p>
+          <p id="ic4"><i class="fab fa-linkedin-in"></i></p>
+        </div>
+        <h4>Get Our App</h4>
+        <div class="app-download">
+          <p><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play"></p>
+          <p id="app1"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Note -->
+    <div class="footer-note">
+      <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </div>
+  </footer>
+  {% endblock %}  
+
+
+   
+
+  <script>
+    $(document).ready(function () {
+      $('.browse-slider').owlCarousel({
+        loop: true,             // Enable infinite loop
+        margin: 10,             // Space between items
+        nav: true,              // Show navigation arrows
+        dots: true,             // Show dots below the carousel
+        autoplay: true,         // Enable autoplay
+        autoplayTimeout: 3000,  // Delay between slides (3000ms = 3 seconds)
+        autoplayHoverPause: true, // Pause on hover
+        responsive: {           // Responsive settings
+          0: {
+            items: 1
+          },
+          600: {
+            items: 3
+          },
+          1000: {
+            items: 4
+          }
+        }
+      });
+    });
+    document.addEventListener("DOMContentLoaded", () => {
+      const items = document.querySelectorAll(".auction-item-1");
+
+
+      // Scroll-triggered animations
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+            }
+          });
+        },
+        { threshold: 0.1 } // Trigger when 10% of the item is visible
+      );
+
+      items.forEach((item) => observer.observe(item));
+
+    });
+    
+   
+
+  </script>
+
+
+
+</body>
+
+</html>
